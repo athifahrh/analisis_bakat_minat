@@ -168,7 +168,7 @@ if not final_filtered_df.empty:
         )
 
         fig.update_xaxes(
-            ticktext=[rename_mapping.get(val, val) for val in aggregated_df["bakat_type"].unique()],
+            ticktext=[rename_mapping.get(val, val).replace(" ", "<br>") for val in aggregated_df["bakat_type"].unique()],
             tickvals=aggregated_df["bakat_type"].unique()
         )
 
@@ -182,7 +182,7 @@ if not final_filtered_df.empty:
 
         selected_bakat_dict = plotly_events(fig, click_event=True)
 
-    st.info("Silakan klik salah satu bar di atas untuk melihat minat", icon="ℹ️")
+    st.info("Silakan klik salah satu bar di atas untuk melihat minat", icon="ℹ")
 
     if selected_bakat_dict:
         selected_bakat = selected_bakat_dict[0]["x"]
@@ -260,4 +260,4 @@ if not final_filtered_df.empty:
                     plotly_events(fig, click_event=False)
 
 else:
-    st.info("Silakan pilih satu atau lebih provinsi", icon="ℹ️")
+    st.info("Silakan pilih satu atau lebih provinsi", icon="ℹ")
